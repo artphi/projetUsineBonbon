@@ -1,4 +1,6 @@
 package projetUsineBonbon;
+import java.util.ArrayList;
+
 import projetUsineBonbon.Matrice;
 
 /** 
@@ -64,6 +66,20 @@ public class StartUsine {
 		Matrice post = new Matrice(matPost);
 		Matrice m0 = new Matrice(marquagePrecedent);
 		Matrice mc = new Matrice(marquageActuel);
+		startActivity();
+		
+		
+	}
+	
+	public static void startActivity(){
+		
+		boolean running = true;
+		
+		while (running){
+			
+			
+			
+		}
 		
 	}
 
