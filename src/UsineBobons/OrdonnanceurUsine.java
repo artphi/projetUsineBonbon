@@ -33,7 +33,7 @@ public class OrdonnanceurUsine extends Thread{
 		for (int i=0; i<9; i++){
 			if(DataUsine.getTransSensibilisee(i)==1){ //Si la transaction est sensibilisée
 				
-				if (interfaceU.getEvent(i)==1){ //Si on a recu l'evement
+				if (interfaceU.getEvent(i)==1 && (DataUsine.marquageActuel[i] < DataUsine.getVecteurMax(i))){ //Si on a recu l'evenement et qu'il y a de la place
 					DataUsine.nouveauMarquage(i); //On fait un nouveau marquage
 					interfaceU.resetEvent(i); //On reset les evenements
 					moteur.setActivite(i, 0);// on met à 0 l'activité
