@@ -2,7 +2,7 @@ package UsineBobons;
 
 public class InterfaceUsine {
 	boolean fabriquerBonbons = true;
-	static int[] etatActivite={0,0,0,0,0,0,0,0,0};
+	static int[] etatActivite={0,0,0,0,0,0,0,0,0,0,0,0};
 	
 	synchronized public void lancerActivite(int i){
 		
@@ -43,7 +43,20 @@ public class InterfaceUsine {
 		case 8: p9_RetourVehicule p9 = new p9_RetourVehicule(this);
 		p9.start();
 		break;
+		
+		case 9: p10_GenLettres p10 = new p10_GenLettres(this);
+		p10.start();
+		break;
+		
+		case 10: p11_ExpedieLettre p11 = new p11_ExpedieLettre(this);
+		p11.start();
+		break;
+		
+		case 11: p12_RetourVehicule p12 = new p12_RetourVehicule(this);
+		p12.start();
+		break;
 		}
+		DataUsine.nbDeThreadsLance++;
 	}
 	
 

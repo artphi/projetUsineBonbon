@@ -17,6 +17,7 @@ public class p5_ProduitBonbons extends Thread {
 			e.printStackTrace();
 		}
 		System.out.println("Fin de la production de 50 bonbons ");
+		DataUsine.nbDeBonbonsProduits++;
 		intefaceU.catchEvent(4);
 	}
 }
