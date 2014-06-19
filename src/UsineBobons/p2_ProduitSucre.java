@@ -17,6 +17,7 @@ public class p2_ProduitSucre extends Thread {
 			e.printStackTrace();
 		}
 		System.out.println("Fin de la production de 1kg de sucre ");
+		DataUsine.nbSucreProduit++;
 		intefaceU.catchEvent(1);
 	}
 

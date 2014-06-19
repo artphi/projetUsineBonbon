@@ -23,7 +23,7 @@ public class OrdonnanceurUsine extends Thread{
 			//Lancement des activités en attentes
 			lancerActivite();
 			
-			effectuerTransactions();
+			effectuerTransitions();
 			
 		}
 		try {
@@ -38,21 +38,33 @@ public class OrdonnanceurUsine extends Thread{
 		System.out.println("##############");
 		System.out.println("#   RESUME   #");
 		System.out.println("##############");
+		System.out.println();
+		System.out.println("****** Statistiques ******");
+		System.out.println("Nombre de matière première de sucre récoltées: " + DataUsine.nbMatPremSucreProduit);
+		System.out.println("Nombre de matière première de colorant récoltées: " + DataUsine.nbMatPremColorantProduit);
+		System.out.println("Nombre de sucre produits: " + DataUsine.nbSucreProduit);
+		System.out.println("Nombre de colorant produits: " + DataUsine.nbColorantProduit);
 		System.out.println("Nombre de bonbons produits: " + DataUsine.nbDeBonbonsProduits);
-		System.out.println("Nombre de threads lancés: " + DataUsine.nbDeThreadsLance);
+		System.out.println("Nombre de paquets livrés: " + DataUsine.nbDePaquetsLivre);
+		System.out.println("Nombre de lettres livrées: " + DataUsine.nbDeLettresLivree);
+		System.out.println();
+		System.out.println("****** Performances ******");
 		System.out.println("Nombre de transitions effectuées: " + DataUsine.nbdeTransactionsEffectuee);
+		System.out.println("Nombre de priorités accordées: " + DataUsine.nbDePrioritesAccordees);
+		System.out.println("Nombre de threads lancés: " + DataUsine.nbDeThreadsLance);
 		System.out.println("Temps écoulé: " + time + " milisec");
+		
 	
 	}
 
 
-	synchronized private void effectuerTransactions() {
+	synchronized private void effectuerTransitions() {
 		for (int i=0; i<DataUsine.nbT; i++){
-			if(DataUsine.getTransSensibilisee(i)==1){ //Si la transaction est sensibilisée
-				if (interfaceU.getEvent(i)==1 /*&& (DataUsine.marquageActuel[i] < DataUsine.getVecteurMax(i))*/){ //Si on a recu l'evenement et qu'il y a de la place				
+			if(DataUsine.getTransSensibilisee(i)==1){ //Si la transition est sensibilisée
+				if (interfaceU.getEvent(i)==1 ){			
 					DataUsine.nouveauMarquage(i); //On fait un nouveau marquage
 					interfaceU.resetEvent(i); //On reset les evenements
-					moteur.setActivite(i, 0);// on met à 0 l'activité
+					DataUsine.threadsLance[i]--;
 					
 					
 				}
@@ -64,14 +76,16 @@ public class OrdonnanceurUsine extends Thread{
 
 	synchronized private void lancerActivite() {
 		for (int i=0; i<DataUsine.nbT; i++){	
-			//active les Threads associés aux jetons si l'état montre que ce n'était pas encore fait
-			etatCourant = DataUsine.getActivite(i);
+			//active les Threads associés aux jetons si il n'a pas déjas atteind son max de threads
 			
-			if (etatCourant<DataUsine.threadMax[i] && DataUsine.getTransSensibilisee(i)==1){
+			if (DataUsine.threadsLance[i] < DataUsine.threadMax[i] && 
+					DataUsine.postSensibilisee[i]==1 
+					){
 				interfaceU.lancerActivite(i);
-				moteur.setActivite(i, 1);	
+				DataUsine.threadsLance[i]++;
 				
 			}
+			
 		}
 		
 	}

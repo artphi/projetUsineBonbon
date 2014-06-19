@@ -7,10 +7,6 @@ public class MoteurUsine {
 		DataUsine.setTransSensibilisee();
 	}
 	
-	synchronized public void setActivite(int i, int etat){
-	 DataUsine.setActivite(i, etat);
-		
-	}
 	
 	synchronized public void nouveauMarquage(int i){
 		DataUsine.nouveauMarquage(i);

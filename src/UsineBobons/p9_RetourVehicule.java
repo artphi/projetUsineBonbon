@@ -18,6 +18,9 @@ public class p9_RetourVehicule extends Thread {
 		}
 		System.out.println("Le véhicule est de retour et près à charger ");
 		intefaceU.catchEvent(8);
-		intefaceU.setFabriquerBonbons(false);
+		DataUsine.nbDePaquetsLivre++;
+		if(DataUsine.nbDePaquetsLivre >= DataUsine.nbDePaquetsALivrer){
+			intefaceU.setFabriquerBonbons(false);
+		}
 	}
 }

@@ -17,6 +17,7 @@ public class p4_ProduitColorant extends Thread {
 			e.printStackTrace();
 		}
 		System.out.println("Fin de la production de 1l de colorant ");
+		DataUsine.nbColorantProduit++;
 		intefaceU.catchEvent(3);
 	}
 }

@@ -17,6 +17,7 @@ public class p12_RetourVehicule extends Thread {
 			e.printStackTrace();
 		}
 		System.out.println("Le véhicule est de retour et prêt à charger ");
+		DataUsine.nbDeLettresLivree++;
 		intefaceU.catchEvent(11);
 		
 	}

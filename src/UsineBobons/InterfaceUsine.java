@@ -2,7 +2,7 @@ package UsineBobons;
 
 public class InterfaceUsine {
 	boolean fabriquerBonbons = true;
-	static int[] etatActivite={0,0,0,0,0,0,0,0,0,0,0,0};
+	static int[] etatEvents={0,0,0,0,0,0,0,0,0,0,0,0};
 	
 	synchronized public void lancerActivite(int i){
 		
@@ -70,14 +70,14 @@ public class InterfaceUsine {
 	}
 
 	synchronized public void catchEvent(int i) {
-		etatActivite[i]=1;		
+		etatEvents[i]=1;		
 	}
 	
 	synchronized public void resetEvent(int i){
-		etatActivite[i]=0;		
+		etatEvents[i]=0;		
 	}
 	
 	synchronized public int getEvent(int i){
-		return etatActivite[i];
+		return etatEvents[i];
 	}
 }

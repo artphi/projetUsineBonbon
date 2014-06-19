@@ -16,6 +16,7 @@ InterfaceUsine intefaceU;
 			e.printStackTrace();
 		}
 		System.out.println("Fin de la récolte de matière première de sucre");
+		DataUsine.nbMatPremSucreProduit++;
 		intefaceU.catchEvent(0);
 	}
 }
