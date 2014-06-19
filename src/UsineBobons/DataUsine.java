@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DataUsine {
+	//Matrice de pré-incidence
 	static //						T01 T02 T03 T04 T05 T06 T07 T08 T09 T10 T11 T12
 	int[][] matPre = {		/*P1*/ {  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
 							/*P2*/ {  0,  0,  0,  0, 50,  0,  0,  0,  0,  0,  0,  0},
@@ -18,6 +19,7 @@ public class DataUsine {
 							/*P10*/{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  2,  0},
 							/*P11*/{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1},
 	};
+	//Matrice de post-incidence
 	static //        					T01 T02 T03 T04 T05 T06 T07 T08 T09 T10 T11 T12
 	int[][] matPost = { 		/*P1*/ {  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
 							    /*P2*/ {  0, 50,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
@@ -35,17 +37,28 @@ public class DataUsine {
 	static int[] marquagePrecedent = {0,0,0,0,0,0,0,0,1,0,0};
 	static int[] marquageActuel = {0,0,0,0,0,0,0,0,0,0,0};
 	static int[] preMarquage = {0,0,0,0,0,0,0,0,0,0,0};
+	
 	static int[] nbJetonsDispo = {0,0,0,0,0,0,0,0,0,0,0};
 	static int[] transSensibilisee={0,0,0,0,0,0,0,0,0,0,0,0};
 	static int[] postSensibilisee={0,0,0,0,0,0,0,0,0,0,0,0};
-
 	static int[] vecteurMax=    {100,200,100,200,200,50,20,1,1,20,1};
+	
 	static int[] threadsLance= {0,0,0,0,0,0,0,0,0,0,0,0};
 	static int[] threadMax=   {20,20,20,20,20,20,20,20,1,20,1,1};
-	
 	//static int[] threadMax=     {1,1,1,1,1,1,1,1,1,1,1,1};
-	static int nbT = 12;
-	static int nbP = 11;
+	
+	//Gestion des priorités
+		static HashMap<Integer, List<Integer>> priorites = new HashMap<Integer, List<Integer>>();
+		static
+		{
+			//	Index=Transition Liste=Noeuds prioritaires sur cette transition
+			priorites.put(10,Arrays.asList(7));
+		}
+	
+	static int nbT = 12; //Nombre de transitions
+	static int nbP = 11; //Nombre de Noeuds
+	
+	//Variables utilisées pour les logs
 	static int nbDeThreadsLance = 0;
 	static int nbDeBonbonsProduits = 0;
 	static int nbdeTransactionsEffectuee = 0;
@@ -57,17 +70,6 @@ public class DataUsine {
 	static int nbMatPremColorantProduit = 0;
 	static int nbSucreProduit = 0;
 	static int nbColorantProduit = 0;
-	
-	
-	static HashMap<Integer, List<Integer>> priorites = new HashMap<Integer, List<Integer>>();
-	static
-	{
-		//	Index=Transition Liste=Noeuds prioritaires sur cette transition
-		priorites.put(10,Arrays.asList(7));
-	}
-
-
-	
 	
 	
 
@@ -83,6 +85,7 @@ public class DataUsine {
 	synchronized public static int getTransSensibilisee(int i) {
 		return transSensibilisee[i];
 	}
+	
 
 	synchronized public static void setTransSensibilisee() {
 		
