@@ -49,9 +49,8 @@ public class OrdonnanceurUsine extends Thread{
 		System.out.println("Nombre de lettres livrées: " + DataUsine.nbDeLettresLivree);
 		System.out.println();
 		System.out.println("****** Performances ******");
-		System.out.println("Nombre de transitions effectuées: " + DataUsine.nbdeTransactionsEffectuee);
 		System.out.println("Nombre de priorités accordées: " + DataUsine.nbDePrioritesAccordees);
-		System.out.println("Nombre de threads lancés: " + DataUsine.nbDeThreadsLance);
+		System.out.println("Nombre de threads (activités) lancés: " + DataUsine.nbDeThreadsLance);
 		System.out.println("Temps écoulé: " + time + " milisec");
 		
 	

@@ -61,7 +61,6 @@ public class DataUsine {
 	//Variables utilisées pour les logs
 	static int nbDeThreadsLance = 0;
 	static int nbDeBonbonsProduits = 0;
-	static int nbdeTransactionsEffectuee = 0;
 	static int nbDePrioritesAccordees = 0;
 	static int nbDePaquetsALivrer = 3;
 	static int nbDePaquetsLivre = 0;
@@ -146,7 +145,7 @@ public class DataUsine {
 				marquageActuel[j]=marquagePrecedent[j] - matPre[j][i] + matPost[j][i];
 				System.out.print(marquageActuel[j] + " ");
 				
-				nbdeTransactionsEffectuee++;
+				
 			}
 			
 			
